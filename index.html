@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia Training - Sua Nova Academia na Vila Matilde</title>
+    <meta name="description" content="Academia completa na Vila Matilde com musculação, pilates, muay thai e mais. Agende sua aula experimental gratuita!">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#E30613',
+                        secondary: '#000000',
+                        accent: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .modalidade-bg {
+            background-color: rgba(227, 6, 19, 0.1);
+        }
+        
+        .instagram-feed {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .instagram-feed img {
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+        }
+        
+        .floating-btn {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        .schedule-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- WhatsApp Floating Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/5511988179504?text=Olá! Gostaria de agendar uma aula experimental na Academia Training." 
+           class="floating-btn bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg flex items-center justify-center transition-all duration-300">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+    
+    <!-- Instagram Floating Button -->
+    <div class="fixed bottom-24 right-6 z-50">
+        <a href="https://instagram.com/academiatraining_" 
+           target="_blank"
+           class="floating-btn bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-full p-4 shadow-lg flex items-center justify-center transition-all duration-300">
+            <i class="fab fa-instagram text-2xl"></i>
+        </a>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://i.imgur.com/0MrgKfu.jpeg" alt="Academia Training Logo" class="h-12">
+                <span class="ml-3 text-xl font-bold text-secondary">ACADEMIA TRAINING</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#diferenciais" class="text-secondary hover:text-primary font-medium">Diferenciais</a>
+                <a href="#modalidades" class="text-secondary hover:text-primary font-medium">Modalidades</a>
+                <a href="#planos" class="text-secondary hover:text-primary font-medium">Planos</a>
+                <a href="#depoimentos" class="text-secondary hover:text-primary font-medium">Depoimentos</a>
+                <a href="#contato" class="text-secondary hover:text-primary font-medium">Contato</a>
+            </div>
+            <button class="md:hidden text-secondary" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full px-4 py-2 shadow-lg" id="mobile-menu">
+            <a href="#diferenciais" class="block py-2 text-secondary hover:text-primary">Diferenciais</a>
+            <a href="#modalidades" class="block py-2 text-secondary hover:text-primary">Modalidades</a>
+            <a href="#planos" class="block py-2 text-secondary hover:text-primary">Planos</a>
+            <a href="#depoimentos" class="block py-2 text-secondary hover:text-primary">Depoimentos</a>
+            <a href="#contato" class="block py-2 text-secondary hover:text-primary">Contato</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-5xl font-bold mb-6">🏋️‍♀️ A Sua Nova Academia no Coração da Vila Matilde!</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Transforme sua saúde, seu corpo e sua autoestima com treinos completos, professores que te acompanham de verdade e uma estrutura feita para te motivar todos os dias!</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="https://wa.me/5511988179504?text=Olá! Gostaria de agendar uma aula experimental na Academia Training." 
+                   class="bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 flex items-center justify-center">
+                    <span>🔴 Quero minha aula grátis</span>
+                </a>
+                <a href="https://instagram.com/academiatraining_" 
+                   target="_blank"
+                   class="bg-secondary hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 flex items-center justify-center">
+                    <i class="fab fa-instagram mr-2"></i> @academiatraining_
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Diferenciais Section -->
+    <section id="diferenciais" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-secondary">Por que escolher a Academia Training?</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Treinos completos para todos os objetivos</h3>
+                    <p class="text-gray-600">Musculação, Pilates, Muay Thai, FitDance, Lambaeróbica e muito mais!</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Professores atenciosos e capacitados</h3>
+                    <p class="text-gray-600">Você não treina sozinho! Aqui, o acompanhamento é real.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Ambiente acolhedor e estrutura completa</h3>
+                    <p class="text-gray-600">Equipamentos de ponta, espaço limpo e seguro, e energia que te impulsiona.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Aceitamos Gympass e Totalpass</h3>
+                    <p class="text-gray-600">Mais liberdade pra você treinar do seu jeito.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Localização excelente na Vila Matilde</h3>
+                    <p class="text-gray-600">Na Rua 29 de Outubro, com fácil acesso.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Resultados garantidos</h3>
+                    <p class="text-gray-600">Metodologia comprovada para você alcançar seus objetivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Modalidades Section -->
+    <section id="modalidades" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-secondary">Flexibilidade para treinar no seu ritmo</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="schedule-table w-full">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th class="text-left p-3">Modalidade</th>
+                            <th class="p-3">Segunda</th>
+                            <th class="p-3">Terça</th>
+                            <th class="p-3">Quarta</th>
+                            <th class="p-3">Quinta</th>
+                            <th class="p-3">Sexta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold p-3">Pilates</td>
+                            <td class="p-3">7:00, 7:45, 19:00, 19:45</td>
+                            <td class="p-3">-</td>
+                            <td class="p-3">7:00, 7:45, 19:00, 19:45</td>
+                            <td class="p-3">-</td>
+                            <td class="p-3">-</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold p-3">Muay Thai</td>
+                            <td class="p-3">-</td>
+                            <td class="p-3">18:00</td>
+                            <td class="p-3">-</td>
+                            <td class="p-3">18:00</td>
+                            <td class="p-3">-</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold p-3">FitDance</td>
+                            <td class="p-3">20:30</td>
+                            <td class="p-3">-</td>
+                            <td class="p-3">20:30</td>
+                            <td class="p-3">-</td>
+                            <td class="p-3">-</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold p-3">Lambaeróbica</td>
+                            <td class="p-3">-</td>
+                            <td class="p-3">-</td>
+                            <td class="p-3">-</td>
+                            <td class="p-3">-</td>
+                            <td class="p-3">19:00</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold p-3">Musculação</td>
+                            <td colspan="5" class="p-3 text-center">
+                                🕕 Segunda a Sexta: 6h às 22h | 🕗 Sábado: 8h às 16h | 🕘 Domingo: 9h às 14h
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="modalidade-bg p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Musculação</h3>
+                    <p class="text-gray-600">Treinos personalizados para todos os níveis, com acompanhamento profissional.</p>
+                </div>
+                <div class="modalidade-bg p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Pilates</h3>
+                    <p class="text-gray-600">Melhore sua postura, flexibilidade e força com nossos instrutores especializados.</p>
+                </div>
+                <div class="modalidade-bg p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Muay Thai</h3>
+                    <p class="text-gray-600">Arte marcial tailandesa que trabalha todo o corpo e defesa pessoal.</p>
+                </div>
+                <div class="modalidade-bg p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-3 text-secondary">FitDance</h3>
+                    <p class="text-gray-600">Dança + exercício = diversão garantida enquanto você queima calorias!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Planos Section -->
+    <section id="planos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-secondary">Planos simples, preços justos. Sem letras miúdas.</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-primary text-center">
+                    <h3 class="text-2xl font-bold mb-4 text-secondary">Mensal</h3>
+                    <p class="text-4xl font-bold mb-6 text-primary">R$ 110</p>
+                    <ul class="space-y-3 text-gray-600 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Acesso ilimitado
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Todas as modalidades
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Acompanhamento profissional
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/5511988179504?text=Olá! Gostaria de assinar o plano mensal da Academia Training." 
+                       class="bg-primary hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full inline-block transition duration-300">
+                        Assinar agora
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-primary text-center transform scale-105 z-10">
+                    <div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 rounded-bl-lg font-bold">
+                        MAIS ECONÔMICO
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-secondary">Trimestral</h3>
+                    <p class="text-4xl font-bold mb-6 text-primary">R$ 270</p>
+                    <p class="text-sm mb-2 text-gray-500">Economize R$ 60</p>
+                    <ul class="space-y-3 text-gray-600 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Acesso ilimitado
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Todas as modalidades
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Acompanhamento profissional
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> 1 avaliação física gratuita
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/5511988179504?text=Olá! Gostaria de assinar o plano trimestral da Academia Training." 
+                       class="bg-primary hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full inline-block transition duration-300">
+                        Assinar agora
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-primary text-center">
+                    <h3 class="text-2xl font-bold mb-4 text-secondary">Semestral</h3>
+                    <p class="text-4xl font-bold mb-6 text-primary">R$ 480</p>
+                    <p class="text-sm mb-2 text-gray-500">Economize R$ 180</p>
+                    <ul class="space-y-3 text-gray-600 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Acesso ilimitado
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Todas as modalidades
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Acompanhamento profissional
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> 2 avaliações físicas gratuitas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> 1 mês de suplemento grátis
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/5511988179504?text=Olá! Gostaria de assinar o plano semestral da Academia Training." 
+                       class="bg-primary hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full inline-block transition duration-300">
+                        Assinar agora
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white p-6 rounded-lg shadow-md max-w-3xl mx-auto text-center">
+                <p class="text-lg text-secondary">Todos os planos incluem musculação e aulas das modalidades extras. Sem taxas de adesão. Sem burocracia.</p>
+                <a href="#contato" class="inline-block mt-4 text-primary font-bold hover:underline">Agende sua visita e escolha o plano ideal para você!</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Depoimentos Section -->
+    <section id="depoimentos" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-secondary">Veja o que os alunos falam sobre a gente 👇</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary text-2xl mr-3">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="text-gray-600 italic">"É muito bom ter uma academia no bairro com bons aparelhos e ótimos professores 😘"</p>
+                    </div>
+                    <div class="border-t border-gray-200 pt-4">
+                        <p class="font-bold text-secondary">— Nathalia Andrade</p>
+                        <div class="flex text-yellow-400 mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary text-2xl mr-3">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="text-gray-600 italic">"Lugar limpo, ótimos instrutores e variedade de máquinas."</p>
+                    </div>
+                    <div class="border-t border-gray-200 pt-4">
+                        <p class="font-bold text-secondary">— Lygia Canelas</p>
+                        <div class="flex text-yellow-400 mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary text-2xl mr-3">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="text-gray-600 italic">"Ambiente acolhedor e professor Renato muito competente e atencioso."</p>
+                    </div>
+                    <div class="border-t border-gray-200 pt-4">
+                        <p class="font-bold text-secondary">— Rose Ribeiro</p>
+                        <div class="flex text-yellow-400 mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Instagram Feed Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6 text-secondary">Acompanhe nosso dia a dia no Insta!</h2>
+            <p class="text-center mb-8 text-gray-600">👉 <a href="https://instagram.com/academiatraining_" target="_blank" class="text-primary font-bold">@academiatraining_</a></p>
+            
+            <div class="instagram-feed bg-white p-4 rounded-lg shadow-md">
+                <!-- Placeholder for Instagram feed - in a real implementation you would use Instafeed.js -->
+                <div class="flex space-x-4">
+                    <img src="https://i.imgur.com/v1uwm9k.jpeg" alt="Treino na Academia" class="w-64 h-64 object-cover rounded">
+                    <img src="https://i.imgur.com/heRugV2.jpeg" alt="Aula de Pilates" class="w-64 h-64 object-cover rounded">
+                    <img src="https://i.imgur.com/G2vCR2T.jpeg" alt="Aula de Muay Thai" class="w-64 h-64 object-cover rounded">
+                    <img src="https://i.imgur.com/KnXwxt7.jpeg" alt="Aula de FitDance" class="w-64 h-64 object-cover rounded">
+                    <img src="https://i.imgur.com/OVpwgOG.jpeg" alt="Equipamentos" class="w-64 h-64 object-cover rounded">
+                    <img src="https://images.pexels.com/photos/416717/pexels-photo-416717.jpeg" alt="Alunos felizes" class="w-64 h-64 object-cover rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-secondary">Tem dúvidas? A gente responde!</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-secondary">
+                        <span>Como agendo minha aula experimental?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden">
+                        <p>Você pode agendar sua aula experimental gratuita pelo WhatsApp (11) 98817-9504 ou diretamente no nosso Instagram @academiatraining_. Basta entrar em contato e marcar o melhor horário para você!</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-secondary">
+                        <span>Preciso ter experiência para fazer as aulas?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden">
+                        <p>Não! Nossas aulas são adaptadas para todos os níveis, desde iniciantes até avançados. Nossos professores estão preparados para te acompanhar desde o primeiro dia, garantindo que você faça os exercícios corretamente e no seu ritmo.</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-secondary">
+                        <span>A musculação tem instrutor?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden">
+                        <p>Sim! Diferente de muitas academias, na Training você nunca treina sozinho. Nossos instrutores estão sempre disponíveis para montar seu treino, corrigir postura e te motivar a alcançar seus objetivos.</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-secondary">
+                        <span>A academia aceita planos corporativos?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden">
+                        <p>Sim! Aceitamos Gympass e Totalpass, além de termos parcerias com diversas empresas da região. Entre em contato para saber se sua empresa tem convênio conosco.</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg text-secondary">
+                        <span>O que devo levar no primeiro dia?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden">
+                        <p>Recomendamos que você venha com roupa confortável, tênis apropriado para exercícios e uma garrafa de água. Temos armários no local para guardar seus pertences e vendemos água mineral caso precise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contato Section -->
+    <section id="contato" class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">📍 Academia Training – Vila Matilde</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div>
+                    <div class="mb-6 flex items-start">
+                        <i class="fas fa-map-marker-alt text-2xl mr-4 mt-1"></i>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Endereço</h3>
+                            <p>Rua 29 de Outubro, 17 – Vila Matilde – São Paulo – SP</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6 flex items-start">
+                        <i class="fas fa-phone-alt text-2xl mr-4 mt-1"></i>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Telefone</h3>
+                            <p>(11) 98817-9504</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6 flex items-start">
+                        <i class="fas fa-clock text-2xl mr-4 mt-1"></i>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Funcionamento</h3>
+                            <p>Seg a Sex: 06:00 às 22:00</p>
+                            <p>Sáb: 08:00 às 16:00</p>
+                            <p>Dom: 09:00 às 14:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                        <a href="https://wa.me/5511988179504?text=Olá! Gostaria de mais informações sobre a Academia Training." 
+                           class="bg-white hover:bg-gray-100 text-primary font-bold py-3 px-6 rounded-full inline-flex items-center justify-center transition duration-300">
+                            <i class="fab fa-whatsapp mr-2 text-xl"></i> WhatsApp
+                        </a>
+                        <a href="https://instagram.com/academiatraining_" 
+                           target="_blank"
+                           class="bg-white hover:bg-gray-100 text-primary font-bold py-3 px-6 rounded-full inline-flex items-center justify-center transition duration-300">
+                            <i class="fab fa-instagram mr-2 text-xl"></i> Instagram
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.8934616062375!2d-46.53681119000877!3d-23.53633397872866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5e1495c3acfd%3A0x76930eb8e2d20473!2sR.%2029%20de%20Outubro%2C%2017%20-%20Vila%20Matilde%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003510-000!5e0!3m2!1sen!2sbr!4v1744915120404!5m2!1sen!2sbr" 
+                        width="100%" 
+                        height="300" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        class="rounded-lg shadow-lg">
+                    </iframe>
+                    <a href="https://maps.app.goo.gl/mXTAbTLGsgnHvAFz8" 
+                       target="_blank"
+                       class="inline-block mt-4 bg-secondary hover:bg-gray-800 text-white font-bold py-2 px-4 rounded transition duration-300">
+                        <i class="fas fa-map-marked-alt mr-2"></i> Ver no Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Final CTA Section -->
+    <section class="py-16 bg-secondary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Pronto(a) pra mudar sua rotina?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Venha viver a experiência da Academia Training e descubra do que você é capaz!</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="https://wa.me/5511988179504?text=Olá! Gostaria de agendar uma aula experimental na Academia Training." 
+                   class="bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300">
+                    🔴 Clique aqui para marcar sua aula experimental gratuita!
+                </a>
+                <a href="https://instagram.com/academiatraining_" 
+                   target="_blank"
+                   class="bg-white hover:bg-gray-100 text-secondary font-bold py-4 px-8 rounded-full text-lg transition duration-300">
+                    <i class="fab fa-instagram mr-2"></i> @academiatraining_
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="https://i.imgur.com/0MrgKfu.jpeg" alt="Academia Training Logo" class="h-10">
+                        <span class="ml-3 text-lg font-bold">ACADEMIA TRAINING</span>
+                    </div>
+                    <p class="mt-2 text-gray-400 text-sm">Sua academia no coração da Vila Matilde</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://facebook.com" target="_blank" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/academiatraining_" target="_blank" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5511988179504" target="_blank" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2023 Academia Training. Todos os direitos reservados.</p>
+                <p class="mt-2">Rua 29 de Outubro, 17 - Vila Matilde, São Paulo - SP</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Toggle answer visibility
+                answer.classList.toggle('hidden');
+                
+                // Rotate icon
+                if (answer.classList.contains('hidden')) {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
+                
+                // Close other open answers
+                faqQuestions.forEach(q => {
+                    if (q !== question) {
+                        q.nextElementSibling.classList.add('hidden');
+                        q.querySelector('i').classList.remove('fa-chevron-up');
+                        q.querySelector('i').classList.add('fa-chevron-down');
+                    }
+                });
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // In a real implementation, you would add Instafeed.js here
+        // For example:
+        /*
+        var feed = new Instafeed({
+            accessToken: 'YOUR_ACCESS_TOKEN',
+            target: 'instagram-feed',
+            template: '<a href="{{link}}" target="_blank"><img src="{{image}}" class="w-64 h-64 object-cover rounded" /></a>',
+            limit: 6
+        });
+        feed.run();
+        */
+    </script>
+</body>
+</html>
